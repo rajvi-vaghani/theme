@@ -1,0 +1,10 @@
+<section *ngIf="user" class="w-25 m-auto">
+    <p-card header="" [style]="{'width': '25rem', 'margin-bottom': '2em' , 'text-align' : 'center'}">
+        <h2 class="marginBottom">My {{user.provider}} profile</h2>
+        <img src="{{ user.photoUrl }}" alt="logo">
+        <h4 class="mt-4">Name :{{user.name}}</h4>
+        <p>Email : {{user.email}}</p>
+        <button class="btn btn-danger" *ngIf="loggedIn" (click)="signOut()">Sign out</button>
+    </p-card>
+
+</section>

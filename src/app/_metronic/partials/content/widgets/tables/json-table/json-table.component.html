@@ -1,0 +1,54 @@
+<section class="container-fuild" style="border: 1px solid lightgray; height: 500px; overflow-y: auto;">
+    <div class="card-header border-0 pt-5">
+        <span class="card-title align-items-start flex-column">
+            <span class="card-label fw-bolder fs-3 mb-1">User Overview</span>
+            <span class="text-muted fw-bold fs-7">Json data</span>
+        </span>
+     <div style="float: right;" class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+        <span class="svg-icon svg-icon-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="2" width="9" height="9" rx="2" fill="black"></rect>
+                <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black"></rect>
+                <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black"></rect>
+                <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black"></rect>
+            </svg>
+        </span>
+    </div>
+        <div class="card-toolbar">
+            <button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary"
+                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
+            </button>
+        </div>
+    </div>
+
+    <!-- -- -->
+    <div #TABLE #table style="padding-bottom: 10px;padding-top: 10px;">  
+        <div class="row">  
+          <div class="col-sm-12">  
+            <button (click)="ExportTOExcel()" class="btn btn-success">ExportTOExcel</button> </div>  
+        </div>  
+        <div class="card-body py-3">
+            <div class="table-responsive">
+                <table class="table table-borderless align-middle gs-0 gy-5">
+                    <thead>
+                        <tr style="font-weight: bold; margin-bottom: 5px;">
+                            <th class="p-0 w-100px">User Id</th>
+                            <th class="p-0 min-w-100px">Id</th>
+                            <th class="p-0 min-w-100px">Title</th>
+                            <th class="p-0 min-w-200px">Body</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of userData" style="font-weight: 400;">
+                            <td>{{ user.userId }}</td>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.title }}</td>
+                            <td>{{ user.body }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      </div>     
+</section>
+

@@ -1,0 +1,118 @@
+<div class="card">
+	<div class="row">
+		
+	</div>
+	<div class="card">
+		<p-toolbar styleClass="p-mb-4">
+			<ng-template pTemplate="left">
+				<button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>
+				
+			</ng-template>
+			<ng-template pTemplate="right">
+				<h4>User Informations</h4>
+			</ng-template>
+		</p-toolbar>
+
+		<p-table #dt [value]="UserData" [rows]="5" [paginator]="true" [filterDelay]="0"
+			[globalFilterFields]="['id','user_id','title','body']" [rowHover]="true" dataKey="id"
+			currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+			[showCurrentPageReport]="true">
+			<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+			<ng-template pTemplate="caption">
+				<div class="flex">
+				</div>
+			</ng-template>
+			<ng-template pTemplate="header">
+				<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Gender</th>
+					<th>Status</th>
+					<th>Action</th>
+				</tr>
+				<tr>
+					<th>
+						<p-columnFilter type="text" (input)="filterId($event)" field="id"></p-columnFilter>
+					</th>
+					<th>
+						<p-columnFilter type="text" (input)="filterName($event)" field="name"></p-columnFilter>
+					</th>
+					<th>
+						<p-columnFilter type="text" (input)="filterEmail($event)" field="email"></p-columnFilter>
+					</th>
+					<th>
+						<p-columnFilter type="text" (input)="filterGender($event)" field="gender"></p-columnFilter>
+					</th>
+					<th>
+						<p-columnFilter type="text" (input)="filterStatus($event)" field="status"></p-columnFilter>
+					</th>
+					<th></th>
+				</tr>
+			</ng-template>
+			<ng-template pTemplate="body" let-user>
+				<tr>
+
+					<td>{{ user.id }}</td>
+					<td>{{ user.name }}</td>
+					<td>{{ user.email }}</td>
+					<td>{{ user.gender }}</td>
+					<td>{{ user.status }}</td>
+					<td style="width: 205px">
+						<button class="btn btn-success" (click)="editData(user.id)"><i
+								class="pi pi-user-edit"></i></button>
+						<button class="btn btn-danger" (click)="deleteData(user.id)"><i
+								class="pi pi-trash"></i></button>
+						<button class="btn btn-primary" (click)="postData(user.id)"><i class="pi pi-list"></i></button>
+					</td>
+
+				</tr>
+
+			</ng-template>
+			<ng-template pTemplate="summary">
+				<div class="p-d-flex p-ai-center p-jc-between">
+					In total there are {{UserData ? UserData.length : 0 }} user data.
+				</div>
+			</ng-template>
+		</p-table>
+	</div>
+
+	<p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="User Information" [modal]="true"
+		styleClass="p-fluid">
+		<ng-template pTemplate="content">
+			<div class="p-field">
+				<label>name</label>
+				<input type="name" pInputText [(ngModel)]="product.name" required autofocus />
+				<small class="p-invalid text-danger" *ngIf="submitted && !product.name">name is required.</small>
+			</div>
+
+			<div class="p-field">
+				<label>email</label>
+				<input type="text" pInputText [(ngModel)]="product.email" required autofocus />
+				<small class="p-invalid text-danger" *ngIf="submitted && !product.email">email is required.</small>
+			</div>
+
+			<div class="p-field">
+				<label>status</label>
+				<select name="status" class="form-control" [(ngModel)]="product.status" required autofocus>
+					<option value="active">active</option>
+					<option value="inactive">inactive</option>
+				</select>
+			</div>
+
+			<div class="p-field">
+				<label>gender</label>
+				<span class="form-control">
+					<input type="radio" class="mx-2" [(ngModel)]="product.gender" value="male" autofocus>male
+					<input type="radio" class="mx-2" [(ngModel)]="product.gender" value="female" autofocus>female
+				</span>
+			</div>
+
+			<div class="p-field">
+				<button class="btn btn-primary mt-3 mx-1" *ngIf="saveproduct" style="float: right;"
+					(click)="submit()">submit</button>
+				<button class="btn btn-primary mt-3 mx-1" *ngIf="saveChange" style="float: right;"
+					(click)="savechange()">save change</button>
+			</div>
+			<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

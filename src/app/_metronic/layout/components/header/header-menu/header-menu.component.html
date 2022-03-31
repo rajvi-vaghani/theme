@@ -1,0 +1,130 @@
+<!-- Dashboard -->
+<div class="menu-item me-lg-1">
+  <a class="menu-link py-3" routerLinkActive="active" routerLink="/dashboard"
+  ><span class="menu-title" translate="MENU.DASHBOARD"></span
+  ></a>
+</div>
+
+<!-- Crafted -->
+<div
+  class="menu-item menu-lg-down-accordion me-lg-1 menu-dropdown"
+  data-kt-menu-trigger="click"
+  data-kt-menu-placement="bottom-start"
+>
+  <span class="menu-link py-3" [ngClass]="calculateMenuItemCssClass('/crafted')">
+    <span class="menu-title">Crafted</span>
+    <span class="menu-arrow d-lg-none"></span>
+  </span>
+  <div
+    class="
+      menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0
+      py-lg-4
+      w-lg-225px
+    "
+    data-kt-menu-dismiss="true"
+    data-popper-placement="bottom-start"
+  >
+
+
+
+    <!-- = -->
+    <div
+      class="menu-item menu-lg-down-accordion me-lg-1"
+      data-kt-menu-trigger="{default:'click', lg: 'hover'}"
+      data-kt-menu-placement="right-start"
+    >
+      <span
+        class="menu-link py-3"
+        [ngClass]="calculateMenuItemCssClass('/crafted/widgets')"
+      ><span class="menu-icon"><i class="bi fs-3 bi-layers"></i></span
+      ><span class="menu-title" data-link="/crafted/widgets">Widgets</span
+      ><span class="menu-arrow"></span
+      ></span>
+      <div
+        class="
+          menu-sub
+          menu-sub-lg-down-accordion
+          menu-sub-lg-dropdown
+          menu-rounded-0
+          py-lg-4
+          w-lg-225px
+        "
+        data-kt-menu-dismiss="true"
+      >  
+       <div class="menu-item me-lg-1">
+          <a
+            class="menu-link py-3"
+            routerLinkActive="active"
+            routerLink="/crafted/widgets/tables"
+          ><span class="menu-bullet"
+          ><span class="bullet bullet-dot"></span></span
+          ><span class="menu-title">User Table</span></a
+          >
+        </div>
+        <div class="menu-item me-lg-1">
+          <a
+            class="menu-link py-3"
+            routerLinkActive="active"
+            routerLink="/crafted/widgets/jsontable"
+          ><span class="menu-bullet"
+          ><span class="bullet bullet-dot"></span></span
+          ><span class="menu-title">Json Table</span></a
+          >
+        </div>
+        <!-- server-grid -->
+        <div class="menu-item me-lg-1">
+          <a
+            class="menu-link py-3"
+            routerLinkActive="active"
+            routerLink="/crafted/widgets/server-grid"
+          ><span class="menu-bullet"
+          ><span class="bullet bullet-dot"></span></span
+          ><span class="menu-title">Post Grid</span></a
+          >
+        </div>
+        <div class="menu-item me-lg-1">
+          <a class="menu-link py-3" routerLinkActive="active" routerLink="crafted/widgets/server-grid">
+            <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+            <span>User Grid</span>
+          </a>
+        </div>
+        <div class="menu-item me-lg-1">
+          <a class="menu-link py-3" routerLinkActive="active" routerLink="crafted/widgets/google-map">
+            <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+            <span>Google Map</span>
+          </a>
+        </div>
+        <div class="menu-item me-lg-1">
+          <a class="menu-link py-3" routerLinkActive="active" routerLink="crafted/widgets/exceldata">
+            <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+            <span>Excel data</span>
+          </a>
+        </div>
+        <div class="menu-item me-lg-1">
+          <a class="menu-link py-3" routerLinkActive="active" routerLink="crafted/widgets/sign-with-google">
+            <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+            <span>Signin with Google </span>
+          </a>
+        </div>
+        <div class="menu-item me-lg-1">
+          <a class="menu-link py-3" routerLinkActive="active" routerLink="crafted/widgets/userdatagrid">
+            <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+            <span>User Data Grid</span>
+          </a>
+        </div>
+        <div class="menu-item me-lg-1">
+          <a class="menu-link py-3" routerLinkActive="active" routerLink="crafted/widgets/sendMails">
+            <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+            <span>Send Mails</span>
+          </a>
+        </div>
+        <div class="menu-item me-lg-1">
+          <a class="menu-link py-3" routerLinkActive="active" routerLink="crafted/widgets/token-interceptor">
+            <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+            <span>Token-interceptor</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

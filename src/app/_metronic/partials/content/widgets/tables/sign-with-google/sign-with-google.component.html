@@ -1,0 +1,26 @@
+<section>
+    <button *ngIf="!loggedIn" class="btn btn-primary my-3" (click)="signInWithGoogle()">Sign in with Google</button>
+</section>
+<section>
+    <p-card header="Sign In" [style]="{'width': '25rem', 'margin-bottom': '2em'}">
+        <form [formGroup]="loginForm">
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" name="email" formControlName="email" class="form-control" required>
+                <span class="text-danger"
+                    *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required']">please enter
+                    email.</span>
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" name="password" formControlName="password" class="form-control" required>
+                <span class="text-danger"
+                    *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']">please
+                    enter password.</span>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success mt-3" type="submit" (click)="logIn()" [disabled]="!loginForm.valid"><span *ngIf="loading"></span> logIn</button>
+            </div>
+        </form>
+    </p-card>
+</section>

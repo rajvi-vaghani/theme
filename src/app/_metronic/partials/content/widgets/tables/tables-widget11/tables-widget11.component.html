@@ -1,0 +1,185 @@
+<style>
+  .Text:hover{
+    font-size: 13px;
+    font-weight: 500;
+    transform: .3 ease;
+    color: #009ef7;
+  }
+  .Text{
+    font-size: 13px;
+    font-weight: 500;
+  }
+</style>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">User Form</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="w-100" style="height:700px; overflow: auto;">
+          <section>
+            <form [formGroup]="userForm">
+              <div class="form-group" style="margin : 2.25rem 0 !important">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" name="firstName" formControlName="firstName"
+                    id="floatingInput" placeholder="firstName" autocomplete="off" required>
+                  <label for="floatingInput">FirstName :</label>
+                </div>
+                <span class="text-danger"
+                  *ngIf="userForm.get('firstName')?.touched && userForm.get('firstName')?.errors?.['required']">
+                  please enter your firstName.
+                </span>
+              </div>
+              <div class="form-group "style="margin : 2.25rem 0 !important">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" name="lastName" formControlName="lastName" id="floatingInput"
+                    placeholder="lastName" autocomplete="off" required>
+                  <label for="floatingInput">LastName :</label>
+                </div>
+                <span class="text-danger"
+                  *ngIf="userForm.get('lastName')?.touched && userForm.get('lastName')?.errors?.['required']">
+                  please enter your lastName.
+                </span>
+              </div>
+              <div class="form-group"style="margin : 2.25rem 0 !important">
+                <div class="form-floating mb-3">
+                  <input type="number" class="form-control" name="age" formControlName="age" id="floatingInput"
+                    placeholder="age" autocomplete="off" required>
+                  <label for="floatingInput">Age :</label>
+                </div>
+                <span class="text-danger"
+                  *ngIf="userForm.get('age')?.touched && userForm.get('age')?.errors?.['required']">
+                  please enter your age.
+                </span>
+              </div>
+              <div class="form-group"style="margin : 2.25rem 0 !important">
+                <div class="form-control">
+                  <label>Gender :</label>
+                  <br>
+                  <input type="radio" name="gender" formControlName="gender" class="me-2" value="Male">Male
+                  <input type="radio" name="gender" formControlName="gender" class="mx-2" value="Female">Female
+                  <input type="radio" name="gender" formControlName="gender" class="mx-2" value="Other">Other
+                </div>
+              </div>
+              <div class="form-group form-control mt-3" style="margin : 2.25rem 0 !important">
+                <label>Hobbies : </label><br>
+                <input type="checkbox" name="hobbies" class="me-2" formControlName="hobbies"
+                  (change)="userHobbies($event)" [checked]="hobby.includes('Reading')" value="Reading">Reading
+                <input type="checkbox" name="hobbies" class="mx-2" formControlName="hobbies"
+                  (change)="userHobbies($event)" [checked]="hobby.includes('travelling')"
+                  value="travelling">Travelling<br>
+                <input type="checkbox" name="hobbies" class="me-2" formControlName="hobbies"
+                  (change)="userHobbies($event)" [checked]="hobby.includes('Exersice')" value="Exersice">Exersice
+                <input type="checkbox" name="hobbies" class="mx-2" formControlName="hobbies"
+                  (change)="userHobbies($event)" [checked]="hobby.includes('Writing')" value="Writing">Writing
+              </div>
+              <div class="form-group mt-3" style="margin : 2.25rem 0 !important">
+                <div class="form-control mb-3">
+                  <label>city :</label>
+                  <select class="form-select" name="city" formControlName="city">
+                    <option value="Surat">Surat</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Ahemdabad">Ahemdabad</option>
+                    <option value="Kerla">Kerla</option>
+                    <option value="Bhavnagar">Bhavnagar</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group"style="margin : 2.25rem 0 !important">
+                <div class="form-control">
+                  <label>Image :</label>
+                  <input type="file" name="image" formControlName="image" (change)="uploadImage($event)"
+                    class="form-control">
+                </div>
+              </div>
+            </form>
+            <div style="float: right;">
+              <button type="button" class="btn btn-secondary mx-1" data-bs-dismiss="modal">Close</button>
+              <button class="btn btn-primary mx-1" type="submit" data-bs-dismiss="modal" (click)="submitData()"
+                [disabled]="!userForm.valid"
+                style="border: 1px solid #009ef7; background-color: #009ef7;">Submit</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- begin::Header -->
+<div class="card-header border-0 pt-5">
+  <h3 class="card-title align-items-start flex-column">
+    <span class="card-label fw-bolder fs-3 mb-1">User Data</span>
+    <span class="text-muted mt-1 fw-bold fs-7">Over 500 user</span>
+  </h3>
+  <div class="card-toolbar">
+
+    <div class="card-toolbar" data-bs-toggle="model" data-bs-placement="top" data-bs-trigger="hover"
+      title="Click to add a user" data-bs-original-title="exampleModal">
+      <a href="#" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <span [inlineSVG]="'./assets/media/icons/duotune/arrows/arr075.svg'" class="svg-icon svg-icon-3"></span>
+        New Member
+      </a>
+    </div>
+
+  </div>
+</div>
+<!-- table == -->
+<div class="card-body py-3">
+  <div class="table-responsive">
+    <table class="table table-borderless align-middle gs-0 gy-4">
+      <thead>
+        <tr class="fw-bolder text-center text-muted bg-light">
+          <th class="min-w-125px">User</th>
+          <th class="ps-4 min-w-125px rounded-start">Name</th>
+          <th class="min-w-125px">Age</th>
+          <th class="min-w-125px">Gender</th>
+          <th class="min-w-200px">Hobbies</th>
+          <th class="min-w-50px">City</th>
+          <th class="min-w-150px">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="text-center" *ngFor="let user of userData">
+          <td class="Text"><img [src]="user.image" alt="logo" width="50px" height="50px" style="border-radius: 10px;"></td>
+          <td class="Text">
+              <p class="m-0 p-0">{{ user.firstName }}</p>
+              <p class="m-0 p-0 text-muted">{{ user.lastName }}</p>
+          </td>
+          <td class="Text">{{ user.age }}</td>
+          <td class="Text">{{ user.gender }}</td>
+          <td class="Text">{{ user.hobbies }}</td>
+          <td class="Text">{{ user.city }}</td>
+          <td  class="text-center Text">
+            <!-- <a class=" btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" (click)="show(user._id)">
+              <span [inlineSVG]="'./assets/media/icons/duotune/general/gen019.svg'" class="svg-icon svg-icon-3"></span>
+            </a> -->
+            <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+              <span [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'" class="svg-icon svg-icon-3"
+                data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editData(user)"></span>
+            </a>
+            <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+              <span [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'" class="svg-icon svg-icon-3"
+                (click)="deleteData(user._id)"></span>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- <div class="w-25">
+  <ul *ngFor="let user of [newData]" style="list-style-type: none;">
+      <li>FirstName : {{ user.firstName }}</li>
+      <li>LastName : {{ user.lastName }}</li>
+      <li>Age : {{ user.age }}</li>
+      <li>Hobbies : {{ user.hobbies }}</li>
+      <li>City: {{ user.city }}</li>
+      <li>Gender : {{ user.gender }}</li>
+  </ul>
+</div> -->
+<!-- <td>
+            <span class="badge badge-light-primary fs-7 fw-bold">Approved</span>
+          </td> -->

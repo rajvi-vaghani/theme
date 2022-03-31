@@ -1,0 +1,20 @@
+<section class="row">
+  <div class="container col-6">
+    <p-card header="Search location" [style]="{'width': '25rem', 'margin-bottom': '2em'}">
+      <input ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" />
+    </p-card>
+    <p-card header="Locations Details" [style]="{'width': '25rem', 'margin-bottom': '2em'}">
+      <p>City: {{ usercity }}</p>
+      <p>State: {{ userstate }}</p>
+      <p>Address: {{ userAddress }}</p>
+      <p>Latitude: {{ userLatitude }}</p>
+      <p>Longitude: {{ userLongitude }}</p>
+    </p-card>
+  </div>
+  <div class="container col-6">
+    <p-card header="Read More" [style]="{'width': '25rem', 'margin-bottom': '2em'}">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In accusamus unde delectus veritatis tempore voluptas amet ullam. Nemo atque saepe totam numquam, fuga qui facere ipsa. At modi laboriosam cumque atque, voluptatibus iure consequm.</p>
+    </p-card>
+
+  </div>
+</section>

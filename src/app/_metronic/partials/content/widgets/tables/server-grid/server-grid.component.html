@@ -1,0 +1,101 @@
+<p-toast></p-toast>
+
+<div class="card">
+    <p-toolbar styleClass="p-mb-4">
+
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2"
+                (click)="openNew()"></button>
+        </ng-template>
+        <ng-template pTemplate="right">
+            <h4>Posts Informations</h4>
+            <!-- <div class="p-d-flex p-ai-center p-jc-between">
+                <h5 class="p-m-0">Manage User Data</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="filter($event)" placeholder="Search..." />
+                </span>
+
+            </div> -->
+        </ng-template>
+    </p-toolbar>
+    <p-table #dt [value]="userId" [rows]="10" [paginator]="true" [filterDelay]="0"
+        [globalFilterFields]="['id','user_id','title','body']" [(selection)]="selectedProducts" [rowHover]="true"
+        dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [showCurrentPageReport]="true">
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 200px !important;" pSortableColumn="id">id
+                </th>
+                <th style="width: 200px !important;" pSortableColumn="user_id">userid
+                </th>
+                <th pSortableColumn="title">title 
+                </th>
+                <th pSortableColumn="body">body 
+                </th>
+                <th style="width: 200px !important;">Action</th>
+            </tr>
+            <tr>
+                <th><p-columnFilter type="text" (input)="filterId($event)" field="id"></p-columnFilter></th>
+                <th><p-columnFilter type="text" (input)="filterUser_id($event)" field="user_id"></p-columnFilter></th>
+                <th><p-columnFilter type="text" (input)="filterTitle($event)" field="title"></p-columnFilter></th>
+                <th><p-columnFilter type="text" (input)="filterBody($event)" field="body"></p-columnFilter></th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.user_id }}</td>
+                <td>{{ user.title }}</td>
+                <td>{{ user.body }}</td>
+                <td>
+                    <button class="btn btn-success" (click)="editUser(user.id)">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>
+
+
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{userId ? userId.length : 0 }} user value.
+            </div>
+            <!-- === -->
+            <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+            <!-- === -->
+        </ng-template>
+
+    </p-table>
+</div>
+
+<p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="Posts Details" [modal]="true"
+    styleClass="p-fluid">
+    <ng-template pTemplate="content">
+
+        <!-- <div class="p-field">
+            <label>userId</label>
+            <input type="number" pInputText [(ngModel)]="product.user_id" required autofocus />
+            <small class="p-invalid text-danger" *ngIf="submitted && !product.user_id">user id is required.</small>
+        </div> -->
+
+        <div class="p-field">
+            <label>Title</label>
+            <input type="text" pInputText [(ngModel)]="product.title" required autofocus />
+            <small class="p-invalid text-danger" *ngIf="submitted && !product.title">title is required.</small>
+        </div>
+
+        <div class="p-field">
+            <label>Body</label>
+            <input type="text" pInputText [(ngModel)]="product.body" required autofocus />
+            <small class="p-invalid text-danger" *ngIf="submitted && !product.body">body is required.</small>
+        </div>
+
+        <div class="p-field">
+            <button class="btn btn-primary mt-3 mx-1" *ngIf="saveproduct" style="float: right;"
+                (click)="saveProduct()">submit</button>
+            <button class="btn btn-primary mt-3 mx-1" *ngIf="saveChange" style="float: right;"
+                (click)="savechange()">save change</button>
+        </div>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

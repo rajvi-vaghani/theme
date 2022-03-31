@@ -1,0 +1,26 @@
+h3.m-3 {
+    line-height: 1;
+    font-weight: 400;
+    font-size: 30px;
+}
+// .btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon) {
+//     border: 0;
+//     padding: calc(0.25rem + 1px) calc(0.75rem + 1px) !important;
+//     background-color: #f1f1f1 !important;
+// }
+.p-button {
+    color: #ffffff !important;
+    background: #f1f1f1 !important;
+    border: 1px solid #f1f1f1 !important;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    border-radius: 3px;
+}
+
+th{
+    font-size: 20px;
+    font-weight: 600;
+    font-family: emoji;
+    padding: 5px;
+}
